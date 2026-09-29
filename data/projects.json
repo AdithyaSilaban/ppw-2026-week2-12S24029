@@ -1,0 +1,42 @@
+[
+  {
+    "id": "bpm-izin",
+    "title": "Redesain Proses Izin Keluar/Menginap Mahasiswa",
+    "category": "Analisis Sistem",
+    "course": "Business Process Management",
+    "role": "Business Process Analyst (Tim)",
+    "description": "Menganalisis proses perizinan keluar/menginap mahasiswa yang berjalan (as-is), mengidentifikasi bottleneck, lalu merancang proses ideal (to-be) memakai notasi BPMN. Elisitasi kebutuhan didokumentasikan setara System Requirement Specification.",
+    "tags": ["BPMN", "SRS", "Business Analyst"],
+    "icon": "bi-signpost-split"
+  },
+  {
+    "id": "food-ordering",
+    "title": "Food Ordering System — Kantin Lama IT Del",
+    "category": "Analisis Sistem",
+    "course": "System Analysis & Design",
+    "role": "Project Analyst & UI Designer (Tim, 5 orang)",
+    "description": "Menyusun System Requirement Specification, use case, DFD, dan ERD untuk sistem pemesanan makanan, kemudian merancang antarmuka untuk tiga peran pengguna: pelanggan, kasir, dan admin kantin.",
+    "tags": ["SyRS", "DFD & ERD", "UI Design"],
+    "icon": "bi-shop"
+  },
+  {
+    "id": "transkrip",
+    "title": "Academic Record Management (T08 Transcript)",
+    "category": "Pemrograman",
+    "course": "Pemrograman Berorientasi Objek",
+    "role": "Software Developer (Pair Programming)",
+    "description": "Menulis logika Java untuk memproses data transkrip akademik menggunakan nested constructs, dikerjakan dengan metode pair programming untuk saling mengoreksi logika dan gaya kode.",
+    "tags": ["Java", "OOP", "Pair Programming"],
+    "icon": "bi-mortarboard"
+  },
+  {
+    "id": "immunicare",
+    "title": "ImmuniCare — Desain Aplikasi Jadwal Imunisasi Anak",
+    "category": "UI/UX Design",
+    "course": "UI/UX Design",
+    "role": "UI/UX Designer",
+    "description": "Merancang prototipe aplikasi pengingat jadwal imunisasi anak di Figma, melakukan evaluasi heuristik terhadap desain, dan menjalankan usability testing bersama responden.",
+    "tags": ["Figma", "Heuristic Evaluation", "Usability Testing"],
+    "icon": "bi-clipboard2-pulse"
+  }
+]

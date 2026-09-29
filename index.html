@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' https://cdn.jsdelivr.net https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com https://cdn.jsdelivr.net; script-src 'self' https://cdn.jsdelivr.net; connect-src 'self' https://jsonplaceholder.typicode.com; img-src 'self' data:;">
 <title>Adithya Silaban — Portofolio Sistem Informasi</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -11,7 +12,7 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
 <!-- Custom override dimuat TERAKHIR supaya bisa menimpa Bootstrap tanpa !important -->
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="css/custom-style.css">
 </head>
 <body>
 
@@ -69,26 +70,27 @@
 
       <aside class="vitals" aria-label="Info singkat">
         <img src="foto-profil.jpg" alt="Foto Adithya Silaban">
+        <!-- Isi dl di bawah ini dimuat dinamis dari data/profile.json oleh js/app.js -->
         <dl>
           <div class="vitals-row">
             <dt>Program studi</dt>
-            <dd>S1 Sistem Informasi</dd>
+            <dd id="vitalProgram">Memuat...</dd>
           </div>
           <div class="vitals-row">
             <dt>Angkatan</dt>
-            <dd>2024</dd>
+            <dd id="vitalCohort">Memuat...</dd>
           </div>
           <div class="vitals-row">
             <dt>IPK</dt>
-            <dd>3.56 / 4.00</dd>
+            <dd id="vitalGpa">Memuat...</dd>
           </div>
           <div class="vitals-row">
             <dt>Domisili</dt>
-            <dd>Laguboti, Indonesia</dd>
+            <dd id="vitalLocation">Memuat...</dd>
           </div>
           <div class="vitals-row">
             <dt>Status</dt>
-            <dd><span class="status-dot"></span> Terbuka untuk kolaborasi</dd>
+            <dd><span class="status-dot"></span><span id="vitalStatus">Memuat...</span></dd>
           </div>
         </dl>
       </aside>
@@ -172,173 +174,52 @@
     </div>
   </section>
 
-  <!-- ============ SECTION: PORTOFOLIO PROYEK ============ -->
+  <!-- ============ SECTION: PORTOFOLIO PROYEK (DINAMIS) ============ -->
   <section id="portofolio" class="section section-portfolio" aria-labelledby="portofolio-title">
     <div class="section-inner">
       <p class="eyebrow-doc">PORTOFOLIO</p>
       <h2 id="portofolio-title">Proyek pilihan</h2>
+      <!-- Data proyek di bawah ini dimuat dinamis dari data/projects.json via js/app.js -->
       <p class="section-note">Klik kartu untuk melihat rincian tiap proyek.</p>
 
-      <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
-
-        <!-- Kartu 1 -->
-        <div class="col">
-          <article class="card project-card h-100">
-            <div class="project-banner"><i class="bi bi-signpost-split"></i></div>
-            <div class="card-body">
-              <h3 class="card-title h5">Redesain Proses Izin Keluar/Menginap</h3>
-              <p class="card-text">Analisis dan redesain proses perizinan mahasiswa menggunakan BPMN dan elisitasi kebutuhan setara SRS.</p>
-              <div class="badge-row">
-                <span class="badge tech-badge">BPMN</span>
-                <span class="badge tech-badge">SRS</span>
-                <span class="badge tech-badge">Business Analyst</span>
-              </div>
-            </div>
-            <div class="card-footer">
-              <button type="button" class="btn btn-detail" data-bs-toggle="modal" data-bs-target="#modalBPM">
-                Lihat detail <i class="bi bi-arrow-up-right"></i>
-              </button>
-            </div>
-          </article>
-        </div>
-
-        <!-- Kartu 2 -->
-        <div class="col">
-          <article class="card project-card h-100">
-            <div class="project-banner"><i class="bi bi-shop"></i></div>
-            <div class="card-body">
-              <h3 class="card-title h5">Food Ordering System — Kantin Lama IT Del</h3>
-              <p class="card-text">Perancangan sistem pemesanan makanan untuk 3 peran pengguna: pelanggan, kasir, dan admin kantin.</p>
-              <div class="badge-row">
-                <span class="badge tech-badge">SyRS</span>
-                <span class="badge tech-badge">DFD &amp; ERD</span>
-                <span class="badge tech-badge">UI Design</span>
-              </div>
-            </div>
-            <div class="card-footer">
-              <button type="button" class="btn btn-detail" data-bs-toggle="modal" data-bs-target="#modalFoodOrdering">
-                Lihat detail <i class="bi bi-arrow-up-right"></i>
-              </button>
-            </div>
-          </article>
-        </div>
-
-        <!-- Kartu 3 -->
-        <div class="col">
-          <article class="card project-card h-100">
-            <div class="project-banner"><i class="bi bi-mortarboard"></i></div>
-            <div class="card-body">
-              <h3 class="card-title h5">Academic Record Management</h3>
-              <p class="card-text">Logika pemrosesan transkrip akademik berbasis Java dengan struktur kontrol bersarang, dikerjakan berpasangan.</p>
-              <div class="badge-row">
-                <span class="badge tech-badge">Java</span>
-                <span class="badge tech-badge">OOP</span>
-                <span class="badge tech-badge">Pair Programming</span>
-              </div>
-            </div>
-            <div class="card-footer">
-              <button type="button" class="btn btn-detail" data-bs-toggle="modal" data-bs-target="#modalTranskrip">
-                Lihat detail <i class="bi bi-arrow-up-right"></i>
-              </button>
-            </div>
-          </article>
-        </div>
-
-        <!-- Kartu 4 -->
-        <div class="col">
-          <article class="card project-card h-100">
-            <div class="project-banner"><i class="bi bi-clipboard2-pulse"></i></div>
-            <div class="card-body">
-              <h3 class="card-title h5">ImmuniCare — Jadwal Imunisasi Anak</h3>
-              <p class="card-text">Desain UI/UX aplikasi jadwal imunisasi anak, mencakup evaluasi heuristik dan usability testing.</p>
-              <div class="badge-row">
-                <span class="badge tech-badge">Figma</span>
-                <span class="badge tech-badge">Heuristic Evaluation</span>
-                <span class="badge tech-badge">Usability Testing</span>
-              </div>
-            </div>
-            <div class="card-footer">
-              <button type="button" class="btn btn-detail" data-bs-toggle="modal" data-bs-target="#modalImmuniCare">
-                Lihat detail <i class="bi bi-arrow-up-right"></i>
-              </button>
-            </div>
-          </article>
-        </div>
-
+      <!-- Filter kategori: tombol aktif menyaring kartu tanpa reload -->
+      <div class="filter-row" id="categoryFilter">
+        <button type="button" class="btn btn-detail active" data-category="all">Semua</button>
+        <button type="button" class="btn btn-detail" data-category="Analisis Sistem">Analisis Sistem</button>
+        <button type="button" class="btn btn-detail" data-category="Pemrograman">Pemrograman</button>
+        <button type="button" class="btn btn-detail" data-category="UI/UX Design">UI/UX Design</button>
       </div>
+
+      <!-- ===== UI STATE: LOADING ===== -->
+      <div id="projectsLoading" class="text-center py-5">
+        <div class="spinner-border" role="status"><span class="visually-hidden">Memuat...</span></div>
+        <p class="mt-3">Memuat data proyek...</p>
+      </div>
+
+      <!-- ===== UI STATE: EMPTY ===== -->
+      <div id="projectsEmpty" class="alert alert-info d-none" role="status">
+        Tidak ada proyek pada kategori ini.
+      </div>
+
+      <!-- ===== UI STATE: ERROR ===== -->
+      <div id="projectsError" class="alert alert-danger d-none" role="alert"></div>
+
+      <!-- ===== UI STATE: SUCCESS — diisi js/app.js ===== -->
+      <div id="projectsContainer" class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 d-none"></div>
     </div>
   </section>
 
-  <!-- ============ MODALS DETAIL PROYEK ============ -->
-  <div class="modal fade" id="modalBPM" tabindex="-1" aria-labelledby="modalBPMLabel" aria-hidden="true">
+  <!-- ============ UNIVERSAL DYNAMIC MODAL ============
+       Satu-satunya modal untuk SEMUA proyek. Isinya diinjeksi oleh
+       App.openProjectModal() di js/app.js berdasarkan project id yang diklik. -->
+  <div class="modal fade" id="universalProjectModal" tabindex="-1" aria-labelledby="projectModalTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header">
-          <h3 class="modal-title h5" id="modalBPMLabel">Redesain Proses Izin Keluar/Menginap Mahasiswa</h3>
+          <h3 class="modal-title h5" id="projectModalTitle"></h3>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
         </div>
-        <div class="modal-body">
-          <p><strong>Mata kuliah:</strong> Business Process Management</p>
-          <p><strong>Peran:</strong> Business Process Analyst (Tim)</p>
-          <p>Menganalisis proses perizinan keluar/menginap mahasiswa yang berjalan (as-is), mengidentifikasi bottleneck, lalu merancang proses ideal (to-be) memakai notasi BPMN. Elisitasi kebutuhan didokumentasikan setara System Requirement Specification.</p>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-detail" data-bs-dismiss="modal">Tutup</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="modal fade" id="modalFoodOrdering" tabindex="-1" aria-labelledby="modalFoodOrderingLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h3 class="modal-title h5" id="modalFoodOrderingLabel">Food Ordering System — Kantin Lama IT Del</h3>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
-        </div>
-        <div class="modal-body">
-          <p><strong>Mata kuliah:</strong> System Analysis &amp; Design</p>
-          <p><strong>Peran:</strong> Project Analyst &amp; UI Designer (Tim, 5 orang)</p>
-          <p>Menyusun System Requirement Specification, use case, DFD, dan ERD untuk sistem pemesanan makanan, kemudian merancang antarmuka untuk tiga peran pengguna: pelanggan, kasir, dan admin kantin.</p>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-detail" data-bs-dismiss="modal">Tutup</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="modal fade" id="modalTranskrip" tabindex="-1" aria-labelledby="modalTranskripLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h3 class="modal-title h5" id="modalTranskripLabel">Academic Record Management (T08 Transcript)</h3>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
-        </div>
-        <div class="modal-body">
-          <p><strong>Mata kuliah:</strong> Pemrograman Berorientasi Objek</p>
-          <p><strong>Peran:</strong> Software Developer (Pair Programming)</p>
-          <p>Menulis logika Java untuk memproses data transkrip akademik menggunakan nested constructs, dikerjakan dengan metode pair programming untuk saling mengoreksi logika dan gaya kode.</p>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-detail" data-bs-dismiss="modal">Tutup</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="modal fade" id="modalImmuniCare" tabindex="-1" aria-labelledby="modalImmuniCareLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h3 class="modal-title h5" id="modalImmuniCareLabel">ImmuniCare — Desain Aplikasi Jadwal Imunisasi Anak</h3>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
-        </div>
-        <div class="modal-body">
-          <p><strong>Mata kuliah:</strong> UI/UX Design</p>
-          <p><strong>Peran:</strong> UI/UX Designer</p>
-          <p>Merancang prototipe aplikasi pengingat jadwal imunisasi anak di Figma, melakukan evaluasi heuristik terhadap desain, dan menjalankan usability testing bersama responden.</p>
-        </div>
+        <div class="modal-body" id="projectModalBody"></div>
         <div class="modal-footer">
           <button type="button" class="btn btn-detail" data-bs-dismiss="modal">Tutup</button>
         </div>
@@ -391,8 +272,11 @@
       <p class="eyebrow-doc">LAYANAN</p>
       <h2 id="layanan-title">Formulir konsultasi</h2>
       <p class="section-note">Punya proyek analisis sistem, UI/UX, atau pemrograman Java? Isi rincian di bawah ini.</p>
+      <p class="section-note">
+        <span class="badge tech-badge">Pesanan tersimpan di perangkat ini: <span id="orderCountBadge">0</span></span>
+      </p>
 
-      <form class="consult-form needs-validation" action="#" method="POST" novalidate>
+      <form class="consult-form needs-validation" id="consultForm" action="#" method="POST" novalidate>
 
         <fieldset>
           <legend>Data pemohon</legend>
@@ -427,11 +311,9 @@
           <legend>Detail konsultasi</legend>
 
           <div class="form-floating form-row">
+            <!-- Opsi diisi dinamis dari data/services.json oleh js/app.js -->
             <select id="topik" name="topik" class="form-select">
-              <option value="analisis">Analisis &amp; Perancangan Sistem</option>
-              <option value="uiux">UI/UX Design</option>
-              <option value="java">Pemrograman Java / OOP</option>
-              <option value="lainnya">Lainnya</option>
+              <option value="">Memuat pilihan layanan...</option>
             </select>
             <label for="topik">Topik</label>
           </div>
@@ -454,7 +336,7 @@
           </fieldset>
 
           <div class="form-floating form-row">
-            <textarea class="form-control" id="pesan" name="pesan" style="height: 110px" required placeholder="Ceritakan singkat kebutuhan Anda"></textarea>
+            <textarea class="form-control textarea-tall" id="pesan" name="pesan" required placeholder="Ceritakan singkat kebutuhan Anda"></textarea>
             <label for="pesan">Deskripsi kebutuhan <span class="req" aria-hidden="true">*</span></label>
             <div class="invalid-feedback">Ceritakan singkat kebutuhan Anda.</div>
           </div>
@@ -492,23 +374,22 @@
 </footer>
 
 
+<!-- Toast notifikasi untuk feedback pengiriman form (dikontrol js/app.js) -->
+<div class="toast-container position-fixed bottom-0 end-0 p-3">
+  <div id="appToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-header">
+      <strong class="me-auto" id="toastTitle">Notifikasi</strong>
+      <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Tutup"></button>
+    </div>
+    <div class="toast-body" id="toastBody"></div>
+  </div>
+</div>
+
 <!-- Bootstrap 5.3.3 JS Bundle (Popper + JS) -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-<script>
-// Validasi visual Bootstrap: cegah submit dan tampilkan invalid-feedback jika ada field tidak valid
-(() => {
-  'use strict';
-  const forms = document.querySelectorAll('.needs-validation');
-  Array.from(forms).forEach((form) => {
-    form.addEventListener('submit', (event) => {
-      if (!form.checkValidity()) {
-        event.preventDefault();
-        event.stopPropagation();
-      }
-      form.classList.add('was-validated');
-    }, false);
-  });
-})();
-</script>
+<!-- Data Access Layer, dimuat SEBELUM app.js karena app.js memanggil ApiService -->
+<script src="js/api-service.js"></script>
+<!-- Presentation Layer: rendering dinamis, UI states, modal, form, toast -->
+<script src="js/app.js"></script>
 </body>
 </html>

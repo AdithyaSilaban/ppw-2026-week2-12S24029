@@ -1,0 +1,22 @@
+[
+  {
+    "id": "analisis",
+    "name": "Analisis & Perancangan Sistem",
+    "description": "SRS, use case, DFD/ERD, dan dokumentasi kebutuhan sistem."
+  },
+  {
+    "id": "uiux",
+    "name": "UI/UX Design",
+    "description": "Heuristic evaluation, usability testing, dan prototyping di Figma."
+  },
+  {
+    "id": "java",
+    "name": "Pemrograman Java / OOP",
+    "description": "Logika program, struktur data, dan pair programming."
+  },
+  {
+    "id": "lainnya",
+    "name": "Lainnya",
+    "description": "Kebutuhan konsultasi di luar kategori di atas."
+  }
+]
