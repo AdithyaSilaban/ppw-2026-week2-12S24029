@@ -118,10 +118,11 @@ const App = {
         (p) => `
       <div class="col">
         <article class="card project-card h-100">
-          <div class="project-banner"><i class="bi ${this.escapeHTML(p.icon)}"></i></div>
+          ${this.renderBanner(p)}
           <div class="card-body">
             <h3 class="card-title h5">${this.escapeHTML(p.title)}</h3>
             <p class="card-text">${this.escapeHTML(p.description)}</p>
+            ${p.metrics ? `<p class="card-text small mb-2"><i class="bi bi-graph-up-arrow me-1"></i><strong>Metrik:</strong> ${this.escapeHTML(p.metrics)}</p>` : ''}
             <div class="badge-row">
               ${p.tags.map((t) => `<span class="badge tech-badge">${this.escapeHTML(t)}</span>`).join('')}
             </div>
@@ -137,6 +138,25 @@ const App = {
       .join('');
   },
 
+  /**
+   * Menentukan tampilan bagian atas kartu:
+   * - Kalau proyek punya field "thumbnail" di JSON → tampilkan foto sungguhan,
+   *   dibungkus .project-thumb supaya rasio gambar apa pun (lebar/landscape
+   *   atau sempit/portrait seperti screenshot HP) tetap utuh, tidak gepeng
+   *   dan tidak terpotong — lihat aturan object-fit: contain di CSS.
+   * - Kalau tidak ada "thumbnail" (misalnya proyek analisis tanpa dokumentasi
+   *   visual) → tetap pakai ikon seperti sebelumnya, TANPA bingkai foto.
+   */
+  renderBanner(p) {
+    if (p.thumbnail) {
+      return `
+        <div class="project-thumb">
+          <img src="${this.escapeHTML(p.thumbnail)}" alt="Tangkapan layar proyek ${this.escapeHTML(p.title)}" loading="lazy">
+        </div>`;
+    }
+    return `<div class="project-banner"><i class="bi ${this.escapeHTML(p.icon)}"></i></div>`;
+  },
+
   // ---------- UNIVERSAL MODAL ----------
   openProjectModal(projectId) {
     const proj = this.state.projects.find((p) => p.id === projectId);
@@ -144,9 +164,24 @@ const App = {
 
     document.getElementById('projectModalTitle').textContent = proj.title;
     document.getElementById('projectModalBody').innerHTML = `
+          ${proj.thumbnail ? `
+        <div class="mb-3 text-center border p-2" style="background: var(--bg-alt);">
+          <img src="${this.escapeHTML(proj.thumbnail)}" class="img-fluid" style="max-height: 280px; object-fit: contain;" alt="${this.escapeHTML(proj.title)}">
+        </div>` : ''}
+      <div class="d-flex align-items-center gap-2 mb-3">
+        <span class="badge tech-badge">${this.escapeHTML(proj.category)}</span>
+      </div>
       <p><strong>Mata kuliah:</strong> ${this.escapeHTML(proj.course)}</p>
       <p><strong>Peran:</strong> ${this.escapeHTML(proj.role)}</p>
-      <p>${this.escapeHTML(proj.description)}</p>
+       ${proj.metrics ? `<p><strong>Metrik / Capaian:</strong> ${this.escapeHTML(proj.metrics)}</p>` : ''}
+      <p><strong>Deskripsi:</strong> ${this.escapeHTML(proj.description)}</p>
+      ${proj.link ? `
+        <div class="mt-3 pt-3 border-top">
+          <a href="${this.escapeHTML(proj.link)}" target="_blank" rel="noopener noreferrer" class="btn btn-detail">
+            ${proj.link.includes('figma.com') ? '<i class="bi bi-figma me-1"></i> Buka Prototipe Figma' : '<i class="bi bi-github me-1"></i> Buka Repositori GitHub'}
+            <i class="bi bi-box-arrow-up-right ms-1"></i>
+          </a>
+        </div>` : ''}
     `;
 
     const modalEl = document.getElementById('universalProjectModal');

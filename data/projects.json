@@ -6,9 +6,13 @@
     "course": "Business Process Management",
     "role": "Business Process Analyst (Tim)",
     "description": "Menganalisis proses perizinan keluar/menginap mahasiswa yang berjalan (as-is), mengidentifikasi bottleneck, lalu merancang proses ideal (to-be) memakai notasi BPMN. Elisitasi kebutuhan didokumentasikan setara System Requirement Specification.",
+    "metrics": "2 Alur Proses BPMN (As-Is & To-Be), 15+ Halaman SRS",
     "tags": ["BPMN", "SRS", "Business Analyst"],
-    "icon": "bi-signpost-split"
-  },
+    "icon": "bi-signpost-split",
+    "thumbnail": "img/Redesain-IK-IB.jpeg",
+    "image": "img/Redesain-IK-IB.jpeg",
+    "link": "https://github.com/AdithyaSilaban/Redesain-Proses-Izin-Keluar-Menginap-Mahasiswa"
+  },  
   {
     "id": "food-ordering",
     "title": "Food Ordering System — Kantin Lama IT Del",
@@ -16,8 +20,12 @@
     "course": "System Analysis & Design",
     "role": "Project Analyst & UI Designer (Tim, 5 orang)",
     "description": "Menyusun System Requirement Specification, use case, DFD, dan ERD untuk sistem pemesanan makanan, kemudian merancang antarmuka untuk tiga peran pengguna: pelanggan, kasir, dan admin kantin.",
+    "metrics": "3 Peran Pengguna, 10+ Use Case, 15 Screen Antarmuka",
     "tags": ["SyRS", "DFD & ERD", "UI Design"],
-    "icon": "bi-shop"
+    "icon": "bi-shop",
+    "thumbnail": "img/FoodOrdering-baru.png",
+    "image": "img/FoodOrdering-baru.png",
+    "link": "https://www.figma.com/proto/XuSG6lNnJ7H1tArLctYpFz/Website-Pemesanan-Kantin-Lama?page-id=0%3A1&node-id=1-5&viewport=-442%2C85%2C0.22&t=1ZzyDOB5pgB0LUhU-1&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=1%3A5"
   },
   {
     "id": "transkrip",
@@ -26,8 +34,12 @@
     "course": "Pemrograman Berorientasi Objek",
     "role": "Software Developer (Pair Programming)",
     "description": "Menulis logika Java untuk memproses data transkrip akademik menggunakan nested constructs, dikerjakan dengan metode pair programming untuk saling mengoreksi logika dan gaya kode.",
+    "metrics": "100% Test Case Passed, Skema Logika Java Nested",
     "tags": ["Java", "OOP", "Pair Programming"],
-    "icon": "bi-mortarboard"
+    "icon": "bi-mortarboard",
+    "thumbnail": "img/Academic-Record-Management.png",
+    "image": "img/Academic-Record-Management.png",
+    "link": "https://github.com/pemrograman-berorientasi-objek/2324-ge-t08-transcript-AdithyaSilaban"
   },
   {
     "id": "immunicare",
@@ -36,7 +48,11 @@
     "course": "UI/UX Design",
     "role": "UI/UX Designer",
     "description": "Merancang prototipe aplikasi pengingat jadwal imunisasi anak di Figma, melakukan evaluasi heuristik terhadap desain, dan menjalankan usability testing bersama responden.",
+    "metrics": "Skor SUS 82.5 (Kategori Baik / Grade A), 10 Responden",
     "tags": ["Figma", "Heuristic Evaluation", "Usability Testing"],
-    "icon": "bi-clipboard2-pulse"
+    "icon": "bi-clipboard2-pulse",
+    "thumbnail": "img/immunicare-combined.png",
+    "image": "img/immunicare-combined.png",
+    "link": "https://www.figma.com/proto/xbiHVtVbX0dmyvH6qgTl8l/Aplikasi-ImmuniCare?node-id=36-235&p=f&viewport=334%2C-3688%2C0.7&t=uOk3pVFnZHaqM02O-1&scaling=contain&content-scaling=fixed&starting-point-node-id=36%3A235&show-proto-sidebar=1&page-id=0%3A1"
   }
 ]
